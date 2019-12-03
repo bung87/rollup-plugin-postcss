@@ -1,4 +1,4 @@
-import * as path from 'path'
+import path from 'path'
 import pify from 'pify'
 import resolve from 'resolve'
 import importCwd from 'import-cwd'

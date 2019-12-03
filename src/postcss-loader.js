@@ -149,6 +149,16 @@ export default {
       outputMap.sources = outputMap.sources.map(v => normalizePath(v))
     }
 
+    for (const msg of res.messages) {
+      if (msg.type === 'dependency') {
+        this.dependencies.add(msg.file)
+      }
+    }
+
+    for (const warning of res.warnings()) {
+      this.warn(warning)
+    }
+
     let output = ''
     let extracted
 

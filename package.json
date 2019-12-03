@@ -11,7 +11,6 @@
     "test": "npm run lint && jest",
     "test:cov": "npm run lint && jest --coverage",
     "build": "bili",
-    "watch": "bili -w",
     "lint": "xo",
     "prepublishOnly": "npm run build"
   },

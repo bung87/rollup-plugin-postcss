@@ -1,4 +1,4 @@
-import * as path from 'path'
+import path from 'path'
 import series from 'promise.series'
 import postcssLoader from './postcss-loader'
 import sassLoader from './sass-loader'

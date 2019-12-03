@@ -1,4 +1,4 @@
-import * as path from 'path'
+import path from 'path'
 import { createFilter } from 'rollup-pluginutils'
 import Concat from 'concat-with-sourcemaps'
 import Loaders from './loaders'
@@ -174,6 +174,7 @@ export default (options = {}) => {
 
         const result = await require('cssnano').process(code, cssOpts)
         code = result.css
+
         if (sourceMap === true && result.map && result.map.toString) {
           map = result.map.toString()
         }
