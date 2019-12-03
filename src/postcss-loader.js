@@ -74,6 +74,7 @@ export default {
     const modulesExported = {}
     const autoModules = options.autoModules !== false && isModuleFile(this.id)
     const supportModules = options.modules || autoModules
+
     if (supportModules) {
       plugins.push(
         require('postcss-modules')({
@@ -133,7 +134,6 @@ export default {
     }
 
     const res = await postcss(plugins).process(code, postcssOpts)
-
     for (const msg of res.messages) {
       if (msg.type === 'dependency') {
         this.dependencies.add(msg.file)
@@ -188,6 +188,7 @@ export default {
         supportModules ? JSON.stringify(modulesExported[this.id]) : 'css'
       };`
     }
+
     if (!shouldExtract && shouldInject) {
       output += `\nimport styleInject from '${styleInjectPath}';\nstyleInject(css${
         Object.keys(options.inject).length > 0 ?

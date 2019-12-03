@@ -1,4 +1,4 @@
-import path from 'path'
+import * as path from 'path'
 import { createFilter } from 'rollup-pluginutils'
 import Concat from 'concat-with-sourcemaps'
 import Loaders from './loaders'
@@ -88,6 +88,7 @@ export default (options = {}) => {
 
       if (postcssLoaderOptions.extract) {
         extracted.set(id, res.extracted)
+
         return {
           code: res.code,
           map: { mappings: '' }
@@ -135,7 +136,6 @@ export default (options = {}) => {
           concat.add(relative, res.code, map)
         }
         let code = concat.content
-
         if (sourceMap === 'inline') {
           code += `\n/*# sourceMappingURL=data:application/json;base64,${Buffer.from(
             concat.sourceMap,
@@ -174,7 +174,6 @@ export default (options = {}) => {
 
         const result = await require('cssnano').process(code, cssOpts)
         code = result.css
-
         if (sourceMap === true && result.map && result.map.toString) {
           map = result.map.toString()
         }
@@ -183,13 +182,16 @@ export default (options = {}) => {
       const codeFile = {
         fileName: codeFileName,
         isAsset: true,
+        type: 'asset',
         source: code
       }
+
       bundle[codeFile.fileName] = codeFile
       if (map) {
         const mapFile = {
           fileName: mapFileName,
           isAsset: true,
+          type: 'asset',
           source: map
         }
         bundle[mapFile.fileName] = mapFile

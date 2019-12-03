@@ -65,7 +65,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = \\"body {\\\\n  display: -webkit-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex;\\\\n}\\\\n\\";
+var css = \\"body {\\\\n  display: -webkit-box;\\\\n  display: flex;\\\\n}\\\\n\\";
 styleInject(css);
 "
 `;
